@@ -3,7 +3,7 @@
 
 library(tidyverse)
 
-facebooktargets <- readxl::read_xlsx("data/input_selectors/ap_targets_final.xlsx",sheet = 3)
+facebooktargets <- readxl::read_xlsx("PATH TO SELECTOR FILE/ap_targets_final.xlsx",sheet = 3)
 
 statemedia <- 
   facebooktargets %>% 
@@ -15,7 +15,7 @@ statemedia <-
   data.frame(`Page or Account URL` = .) %>%
   mutate(List = "China_StateMedia")
 
-write_csv(statemedia,file = "data/ct_lists/batchupload_statemedia_v2.csv")
+write_csv(statemedia,file = "PATH TO SELECTOR DIR WITH CT LISTS/batchupload_statemedia_v2.csv")
 
 diplomats <-
   facebooktargets %>% 
@@ -27,4 +27,4 @@ diplomats <-
   data.frame(`Page or Account URL` = .)%>%
   mutate(List = "China_Diplomats")
 
-write_csv(diplomats,file = "data/ct_lists/batchupload_diplomats_v2.csv")
+write_csv(diplomats,file = "PATH TO SELECTOR DIR WITH CT LISTS/batchupload_diplomats_v2.csv")

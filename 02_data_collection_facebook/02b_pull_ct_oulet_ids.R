@@ -71,7 +71,7 @@ out <- purrr::map2(
   }
 ) %>% bind_rows()
 
-fb_targets <- readxl::read_xlsx("data/input_selectors/ap_targets_final.xlsx",sheet = 3) %>%
+fb_targets <- readxl::read_xlsx("PATH TO SELECTOR FILE/ap_targets_final.xlsx",sheet = 3) %>%
   rename(URL = handle)%>% 
   mutate(id = as.character(id)) 
 
@@ -96,5 +96,5 @@ ct_pgdata <-
   ) %>% 
   select(-contains(".."))
 
-write_csv(ct_pgdata,file = "data/ct_lists/returned_ct_page_ids_final2.csv")
+write_csv(ct_pgdata,file = "PATH TO DIR WIH CT LIST IDS/returned_ct_page_ids_final2.csv")
 

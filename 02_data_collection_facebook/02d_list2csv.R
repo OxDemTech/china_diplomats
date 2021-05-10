@@ -2,8 +2,8 @@ library(tidyverse)
 
 ########################
 
-path1a = "data/nogit/ct_linkdata_raw/"
-path1b = "data/nogit/ct_postdata_raw/"
+path1a = "PATH/ct_linkdata_raw/"
+path1b = "PATH/ct_postdata_raw/"
 
 all_files <- 
   c(paste0(path1a,list.files(path = path1a)),
@@ -104,7 +104,7 @@ system.time({
 
 #all_files[1] %>% str_extract(pattern = '(?<=raw/).*?(?=.rds)')
 
-targets <- readxl::read_xlsx("data/input_selectors/ap_targets_final.xlsx",sheet = 1)
+targets <- readxl::read_xlsx("PATH/ap_targets_final.xlsx",sheet = 1)
 urlreg <- 
   targets$lang_identifier %>% 
   .[. != ""] %>% 
@@ -112,7 +112,7 @@ urlreg <-
   paste0("",.,"", collapse = "|") %>% 
   str_replace_all("\\.","\\\\.") 
 
-path2b = "data/nogit/ct_postdata_parsed/"
+path2b = "PATH/ct_postdata_parsed/"
 system.time({
   fb_posts1 <- purrr::map(.x = paste0(path2b,list.files(path = path2b)),
                          .f = function(f){
@@ -141,12 +141,12 @@ system.time({
                          }
   ) %>% bind_rows() 
 })
-saveRDS(fb_posts1,"data/nogit/fb_posts_final.rds")
+saveRDS(fb_posts1,"PATH/fb_posts_final.rds")
 
 
 ####
 
-path2a = "data/nogit/ct_linkdata_parsed/"
+path2a = "PATH/ct_linkdata_parsed/"
 system.time({
   fb_links <- purrr::map(.x = paste0(path2a,list.files(path = path2a)),
                           .f = function(f){
@@ -181,7 +181,7 @@ table(fb_links$detected_domain) %>% View()
 
 fb_links2 <- fb_links %>% distinct(platformId,.keep_all = T)
 
-saveRDS(fb_links2,"data/nogit/fb_links_final.rds")
+saveRDS(fb_links2,"PATH/fb_links_final.rds")
 
 
 

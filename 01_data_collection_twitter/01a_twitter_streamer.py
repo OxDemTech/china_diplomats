@@ -132,14 +132,14 @@ if __name__ == '__main__':
     args = parse_arguments()
 
     
-    if args.api_key == "m_schliebs":
-        keys = m_schliebs
-    elif args.api_key == "prrrmp2":
-        keys = prrrmp2
-    elif args.api_key == "ommsox01":
-        keys = ommsox01
-    elif args.api_key == "jonathan":
-        keys = jonathan
+    if args.api_key == "xxxx":
+        keys = xxxxx
+    elif args.api_key == "xxxxx":
+        keys = xxxxx
+    elif args.api_key == "xxxxx":
+        keys = xxxx
+    elif args.api_key == "xxxxx":
+        keys = xxxxxx
         
     consumer_key = keys['CONSUMER_KEY']
     consumer_secret = keys['CONSUMER_SECRET']
@@ -173,7 +173,6 @@ if __name__ == '__main__':
             handles = twitter_targets["twitter_handle"].dropna()
             
             atmentions = ['@'+x for x in handles]
-            #tomentions = ['to:'+x for x in handles]
             screen_handles = [x for x in handles]
             
             api = API(auth)
@@ -194,7 +193,6 @@ if __name__ == '__main__':
             url_target_file = url_targets["twitter_keyword"].dropna()
             state_backed = [x for x in url_target_file]
             
-            #print("%s - Tracking number of URLs %s \n\n %s"%(datetime.now(),len(state_backed),",".join(state_backed)))
             print("%s - Tracking number of URLs %s "%(datetime.now(),len(state_backed)))
             print("\n\n\n")
             
@@ -222,7 +220,6 @@ if __name__ == '__main__':
             #we want to both get tweets / RTs from these people and track mentions
             
             stream.filter(follow = user_ids, track = track_terms)
-            #stream.filter(track = track_terms)
             
 
         except KeyboardInterrupt:

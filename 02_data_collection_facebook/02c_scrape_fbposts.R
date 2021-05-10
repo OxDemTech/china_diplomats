@@ -7,7 +7,7 @@ library(lubridate)
 search_endpoint = "https://api.crowdtangle.com/posts/search"
 
 ct_pgdata <- 
-  read_csv(file = "data/ct_lists/returned_ct_page_ids_final2.csv",col_types = cols(.default = col_guess(),
+  read_csv(file = "PATH/returned_ct_page_ids_final2.csv",col_types = cols(.default = col_guess(),
                                                                      id = col_character(),
                                                                      platformId = col_character()))
 
@@ -20,7 +20,7 @@ api_token = read.table("PATH TO CT TOKEN.txt")$V1
 ## parse outlet
 
 already_done <- 
-  list.files("data/nogit/ct_postdata_raw/") %>% 
+  list.files("PATH/ct_postdata_raw/") %>% 
   str_extract("^(.+?)_") %>% 
   str_remove_all("_")
 
@@ -51,7 +51,7 @@ purrr::map2(.x = subdata$platformId,
                                   output_raw = TRUE)
                 
 
-                saveRDS(postlist,paste0("data/nogit/ct_postdata_raw/",
+                saveRDS(postlist,paste0("PATH/ct_postdata_raw/",
                                         y,"_",x,
                                         ".rds"))
                 
